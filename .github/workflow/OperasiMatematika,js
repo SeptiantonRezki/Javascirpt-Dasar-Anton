@@ -1,0 +1,162 @@
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+        <title>Operasi Tambah</title>
+        <style>
+            button{
+                background-color: transparent;
+                border: 0px transparent;
+                padding: 10px;
+                
+                border-radius: 10px;
+                margin: 0px 10px;
+
+            }
+            button:hover{
+                cursor: pointer;
+                background-color: tomato;
+            }
+            input[type='number']{
+                padding: 10px;
+                background-color: transparent;
+                font-family: Arial, Helvetica, sans-serif;
+                border:0px transparent;
+                border-radius: 5px;
+
+            }
+
+            input[type='text']{
+                padding: 10px;
+                background-color: transparent;
+                font-family: Arial, Helvetica, sans-serif;
+                border:0px transparent;
+                border-radius: 5px;
+
+            }
+            
+            input[type='number']:hover{
+
+             
+            }
+        </style>
+    </head>
+    <body>
+        <h1>OPERASI MATEMATIKA</h1>
+        <table border="0">
+            <tr>
+                <td>
+                    <label for="angka1">Bilangan Pertama</label>
+                </td>
+                <td>
+                    <input type="number" placeholder="Masukkan Angka"   id="angka1" value="0" required>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <label for="angka2">Bilangan Kedua</label>
+                </td>
+                <td>
+                    <input type="number" placeholder="Masukkan Angka"  id="angka2"  required>
+                </td>
+            </tr>
+            
+            <tr>
+                <td>
+                    <label for="Hasil">Hasil</label>
+                </td>
+                <td>
+                    <input type="text" placeholder="Masukkan Angka" id="Hasil" >
+                </td>
+            </tr>
+
+        </table>
+        <hr>
+        <button class="tambah">tambah</button>
+        <button class="kurang">kurang</button>
+        <button class="kali">kali</button>
+        <button class="bagi">bagi</button>
+        <script>
+
+            //tangkap attribute valuenya pertama dan kedua
+            let angka1 = document.getElementById("angka1");
+            let angka2 = document.getElementById("angka2");
+
+            //buat variabel kosong untuk di isi nilainya saat berubah
+            var kosong1 = 0, kosong2 = 0;
+            
+            //event saat berubah, maka nilainya kosong akan berganti
+            angka1.oninput = function(){
+                kosong1 = angka1.value;
+            }
+            angka2.oninput = function(){
+                kosong2 = angka2.value;
+            }
+            // var kosong1 = angka1.value; tidak bisa
+            // var kosong2 = angka2.value; tidak bisa
+            
+            
+            let hasil_nya = document.getElementById("Hasil");
+
+
+            const tambah = document.getElementsByClassName("tambah")[0];
+            tambah.addEventListener("click", () => {
+                operasi(kosong1,kosong2,"tambah");
+            });
+
+            const kurang = document.getElementsByClassName("kurang")[0];
+            kurang.addEventListener("click", () => {
+                operasi(kosong1,kosong2, "kurang");
+            });
+
+            const kali = document.getElementsByClassName("kali")[0];
+            kali.addEventListener("click", () => {
+                operasi(kosong1,kosong2, "kali");
+            });
+
+            const bagi = document.getElementsByClassName("bagi")[0];
+            bagi.addEventListener("click", () => {
+                operasi(kosong1,kosong2, "bagi");
+            });
+
+
+
+            function operasi(angka1,angka2,operasi){
+                var hasil = 0;
+                // console.log(angka1);
+                // console.log(angka2);
+                var operasi1 = parseInt(angka1);
+                var operasi2 = parseInt(angka2);
+
+                if(operasi == "tambah"){
+                    hasil = operasi1 + operasi2;
+                    // console.log(hasil);
+                    hasil_nya.value = hasil;
+
+                    
+                } 
+
+                else if(operasi == "kurang"){
+                    hasil = angka1 - angka2;
+                    // console.log(hasil);
+                    hasil_nya.value = hasil;
+                    
+
+                }
+                
+                else if(operasi == "kali"){
+                    hasil = (angka1 * angka2);
+                    hasil_nya.value = hasil;
+
+
+                }
+                
+                else if(operasi == "bagi"){
+                    hasil = (angka1/angka2);
+                    hasil_nya.value = hasil;
+
+                }
+            }
+        </script>
+    </body>
+    
+</html>
